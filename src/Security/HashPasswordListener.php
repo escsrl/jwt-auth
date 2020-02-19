@@ -4,19 +4,19 @@ namespace Esc\JwtAuth\Security;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Esc\User\Entity\User;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Esc\EscUser\Entity\EscUser;
+use Symfony\Component\Security\Core\Encoder\EscUserPasswordEncoderInterface;
 
 final class HashPasswordListener implements EventSubscriber
 {
-    /** @var UserPasswordEncoderInterface */
+    /** @var EscUserPasswordEncoderInterface */
     private $passwordEncoder;
 
     /**
      * HashPasswordListener constructor.
-     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param EscUserPasswordEncoderInterface $passwordEncoder
      */
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(EscUserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
     }
@@ -28,7 +28,7 @@ final class HashPasswordListener implements EventSubscriber
     public function prePersist(LifecycleEventArgs $args): void
     {
         $entity = $args->getEntity();
-        if (!$entity instanceof User) {
+        if (!$entity instanceof EscUser) {
             return;
         }
 
@@ -42,7 +42,7 @@ final class HashPasswordListener implements EventSubscriber
     public function preUpdate(LifecycleEventArgs $args): void
     {
         $entity = $args->getEntity();
-        if (!$entity instanceof User) {
+        if (!$entity instanceof EscUser) {
             return;
         }
 
@@ -62,10 +62,10 @@ final class HashPasswordListener implements EventSubscriber
     }
 
     /**
-     * @param User $entity
+     * @param EscUser $entity
      * @return void
      */
-    private function encodePassword(User $entity): void
+    private function encodePassword(EscUser $entity): void
     {
         if ($entity->getPlainPassword() === null) {
             return;
