@@ -4,7 +4,7 @@ namespace Esc\JwtAuth\Security;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Esc\EscUser\Entity\EscUser;
+use Esc\User\Entity\EscUser;
 use Symfony\Component\Security\Core\Encoder\EscUserPasswordEncoderInterface;
 
 final class HashPasswordListener implements EventSubscriber
