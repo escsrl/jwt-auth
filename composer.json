@@ -22,12 +22,18 @@
     "require": {
         "php": "^7.3",
         "ext-json": "*",
-        "escsrl/user": "^2.1",
+        "escsrl/user": "dev-extensible-user",
         "gesdinet/jwt-refresh-token-bundle": "^0.9",
         "lexik/jwt-authentication-bundle": "^2.6",
         "symfony/http-foundation": "^5.0",
         "symfony/security-bundle": "^5.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/veronicalupopasini/user.git"
+        }
+    ],
     "config": {
         "sort-packages": true
     },
