@@ -5,18 +5,18 @@ namespace Esc\JwtAuth\Security;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Esc\User\Entity\EscUser;
-use Symfony\Component\Security\Core\Encoder\EscUserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 final class HashPasswordListener implements EventSubscriber
 {
-    /** @var EscUserPasswordEncoderInterface */
+    /** @var UserPasswordEncoderInterface */
     private $passwordEncoder;
 
     /**
      * HashPasswordListener constructor.
-     * @param EscUserPasswordEncoderInterface $passwordEncoder
+     * @param UserPasswordEncoderInterface $passwordEncoder
      */
-    public function __construct(EscUserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
     }
